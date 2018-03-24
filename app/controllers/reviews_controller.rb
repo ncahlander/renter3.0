@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 
+  #before_action :authenticate_user!
 #controller for all review related actions for the form
   def index
     @reviews = Review.all
