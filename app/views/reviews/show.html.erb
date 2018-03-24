@@ -1,0 +1,19 @@
+<p>
+  <strong>Title:</strong>
+  <%= @review.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @review.text %>
+</p>
+
+<h2>Comments</h2>
+<%= render @review.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>
