@@ -6,12 +6,35 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                          'data-turbolinks-track': 'reload' %>
 
+                                          <!--[if lt IE 9]>
+                                            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+                                            </script>
+                                          <![endif]-->
+  </head>
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "renter", welcome_index_path, id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Search", '#' %></li>
+            <li><%= link_to "About",  '#' %></li>
+            <!-- if not signed in-->
+            <li><%= link_to "Log in", new_user_registration_path %></li>
+            <!-- if signed in -->
+            <!-- don't require log in, show profile -->
+            <!-- <li><%= link_to "Profile", '#'%> </li> -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
     <!-- #keep or move up? -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %> <p class="alert alert-info"><%= notice%> <%end%></p>
+    <% if alert %><p class="alert alert-warning"><%= alert %><%end%></p>
     <%= yield %>
   </body>
 </html>
