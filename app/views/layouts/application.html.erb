@@ -20,13 +20,23 @@
         <%= link_to "renter", welcome_index_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Search", '#' %></li>
+
+            <!-- From search bar tutorial -->
+            <%= form_tag(users_path, method: "get") do %>
+              <%= label_tag(:q, "Search users:") %>
+              <%= text_field_tag(:q) %>
+              <%= submit_tag("Search") %>
+            <% end %>
+            <!-- From search bar tutorial (end) -->
+
+            <!-- <li><%= link_to "Search", '#' %></li> -->
             <li><%= link_to "About",  '#' %></li>
             <!-- if not signed in-->
             <li><%= link_to "Log in", new_user_registration_path %></li>
             <!-- if signed in -->
             <!-- don't require log in, show profile -->
             <!-- <li><%= link_to "Profile", '#'%> </li> -->
+
           </ul>
         </nav>
       </div>
