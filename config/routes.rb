@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :path_prefix => 'd'
+
+  get 'users/index'
+  match '/users',   to: 'users#index',   via: 'get'
+  match '/users/:id',     to: 'users#show',       via: 'get'
+
+  resources :users, :only =>[:show]
+
+  #devise_for :users
+  #og, maybe add back!
   get 'welcome/index'
 
   resources :reviews do

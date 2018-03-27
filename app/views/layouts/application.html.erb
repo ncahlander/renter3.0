@@ -23,8 +23,21 @@
             <li><%= link_to "Search", '#' %></li>
             <li><%= link_to "About",  '#' %></li>
             <!-- if not signed in-->
-            <li><%= link_to "Log in", new_user_registration_path %></li>
+            <!-- <li><%= link_to "Log in", new_user_registration_path %></li> -->
             <!-- if signed in -->
+            <!-- <% if user_signed_in? %><li><%= link_to "Profile", '#' %></li>
+            <% else %><li><%= link_to "Log in", new_user_registration_path %></li><%end%> -->
+
+            <% if user_signed_in? %>
+              <li><%= link_to 'Profile', edit_user_registration_path %></li>
+              <li><%= link_to 'Log out', destroy_user_session_path, :method=> 'delete'%></li>
+            <% else %>
+              <li><%= link_to "Log in", new_user_session_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <%end%>
+            <% if user_signed_in? %>
+              <li><% link_to 'Users', '#' %></li>
+            <%end%>
             <!-- don't require log in, show profile -->
             <!-- <li><%= link_to "Profile", '#'%> </li> -->
           </ul>
@@ -35,6 +48,7 @@
     <!-- #keep or move up? -->
     <% if notice %> <p class="alert alert-info"><%= notice%> <%end%></p>
     <% if alert %><p class="alert alert-warning"><%= alert %><%end%></p>
+    <p><%= link_to 'Users: ', users_index_path%><%=User.count%> registered and counting! </p>
     <%= yield %>
   </body>
 </html>
