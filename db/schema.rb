@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327233534) do
+ActiveRecord::Schema.define(version: 20180328215634) do
 
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
@@ -26,6 +26,31 @@ ActiveRecord::Schema.define(version: 20180327233534) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "numOfThing"
+    t.string "date"
+    t.boolean "notice"
+    t.boolean "rentLeft"
+    t.decimal "rentLeftAmount"
+    t.boolean "late"
+    t.decimal "lateThreeDayNum"
+    t.decimal "latePaymentNum"
+    t.boolean "nSF"
+    t.decimal "nsfNum"
+    t.boolean "damages"
+    t.string "damagesDescription"
+    t.boolean "complaintsFiled"
+    t.string "complaintDescription"
+    t.boolean "undocumentedHousemates"
+    t.boolean "coTenants"
+    t.boolean "rentalStatus"
+    t.boolean "evicted"
+    t.boolean "rentAgain"
+    t.boolean "depositRefund"
+    t.boolean "pets"
+    t.string "petType"
+    t.decimal "rentAmount"
+    t.boolean "lease"
+    t.string "tenantNotes"
   end
 
   create_table "users", force: :cascade do |t|
