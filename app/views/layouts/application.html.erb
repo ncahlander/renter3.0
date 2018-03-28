@@ -18,16 +18,18 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <%= link_to "renter", welcome_index_path, id: "logo" %>
+        <%= form_tag(users_path, method: "get") do %>
+          <%= label_tag(:q, "Search users:") %>
+          <%= text_field_tag(:q) %>
+          <%= submit_tag("Search") %>
+        <% end %>
+        <!-- From search bar tutorial (end) -->
         <nav>
           <ul class="nav navbar-nav navbar-right">
 
             <!-- From search bar tutorial -->
-            <%= form_tag(users_path, method: "get") do %>
-              <%= label_tag(:q, "Search users:") %>
-              <%= text_field_tag(:q) %>
-              <%= submit_tag("Search") %>
-            <% end %>
-            <!-- From search bar tutorial (end) -->
+
+
 
             <!-- <li><%= link_to "Search", '#' %></li> -->
             <li><%= link_to "About",  '#' %></li>
