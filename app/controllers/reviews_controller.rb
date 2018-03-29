@@ -59,7 +59,7 @@ class ReviewsController < ApplicationController
 
   private
   def reviews_params
-    params.require(:review).permit(:title, :text, :rentLeftAmount)
+    params.require(:review).permit(:title, :text, :rentLeftAmount, :nSFNum)
     #prevents wrongful assignment in database if fields off
   end
 end
