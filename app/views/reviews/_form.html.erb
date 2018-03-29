@@ -14,14 +14,27 @@
     </div>
   <% end %>
 
-  <p>
+  <!-- <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
-  </p>
+  </p> -->
 
-  <p>
+  <!-- <p>
     <%= form.label :text %><br>
     <%= form.text_field :text %>
+  </p> -->
+
+<!-- make so your profile automatically added in  -->
+  <p>
+    <%= form.label :user %><br>
+    <!-- <%= form.text_field :text %> -->
+    <%= current_ %>
+  </p>
+
+<!-- make so you can select the tenant  -->
+  <p>
+    <%= form.label :tenant %><br>
+    <%= form.text_field :title %>
   </p>
 
   <p>

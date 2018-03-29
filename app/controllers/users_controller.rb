@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
   def index
   end
+  # def show
+  # @user = User.find_by_email(params[:id])
+  #
+  # end
+
   def show
-  @user = User.find_by_email(params[:id])
-  end
+  @user = User.find(params[:id])
+  
+end
   def sign
     @users = User.all
     if params[:search]
