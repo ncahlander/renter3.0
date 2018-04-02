@@ -7,8 +7,13 @@ class UsersController < ApplicationController
       @users = Users.all.order("created_at DESC")
     end
   end
+  # def show
+  # @user = User.find_by_email(params[:id])
+  #
+  # end
+
   def show
-    @users = User.find_by_email(params[:id])
+  @user = User.find(params[:id])
   end
   def sign
     @users = User.all
