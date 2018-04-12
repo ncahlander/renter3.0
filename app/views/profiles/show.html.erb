@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
+
+<br>
+<br>
+<h2>Reviews</h2>
+<br>
+
+  <%= form_with(model: [@profile, @profile.reviews.build]) do |form| %>
+  <!-- add error box again -->
+
+    <p>
+      <%= form.label :title %><br>
+      <!-- <%= form.text_field :text %> -->
+      <!-- <%= form.text_field :title %> -->
+    </p>
+
+
+    <p>
+      <%= form.label :tenant %><br>
+      <%= form.text_field :text %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+<br>
+<h1> previous reviews: </h1>
+<hr>
+<% @reviews = Review.all %>
+<% @reviews.each do |review| %>
+  <% if review.user_id == current_user.id %>
+    <%= review.user_id %>
+    <%= review.profile_id %>
+    <br>
+
+    <%= review.text %><br/>
+
+  <% end %>
+<% end %>

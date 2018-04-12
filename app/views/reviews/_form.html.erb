@@ -1,40 +1,29 @@
-<%= form_with model: @review, local: true do |form| %>
 
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@review.errors.count, "error") %> prohibited
-        this review from being saved:
-      </h2>
-      <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: [@profile, @profile.reviews.build]) do |f| %>
+<!-- add error box again -->
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@review.errors.count, "error") %> prohibited
+      this review from being saved:
+    </h2>
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-  <!-- <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p> -->
-
-  <!-- <p>
-    <%= form.label :text %><br>
-    <%= form.text_field :text %>
-  </p> -->
-
-<!-- make so your profile automatically added in  -->
   <p>
-    <%= form.label :user %><br>
+    <%= form.label :title %><br>
     <!-- <%= form.text_field :text %> -->
-    <%= current_ %>
+    <%= current_user.id  %>
   </p>
 
-<!-- make so you can select the tenant  -->
   <p>
     <%= form.label :tenant %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :text %>
   </p>
 
   <p>
@@ -162,5 +151,20 @@
   <p>
     <%= form.submit %>
   </p>
+<% end %>
 
+<!-- <%= render '/reviews/form' %> -->
+
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@review.errors.count, "error") %> prohibited
+      this review from being saved:
+    </h2>
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

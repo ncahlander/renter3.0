@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :profiles do
+    resources :reviews
+  end
   devise_for :users, :path_prefix => 'd'
 
   get 'users/index'
@@ -6,6 +9,9 @@ Rails.application.routes.draw do
   match '/users/:id',     to: 'users#show',       via: 'get'
 
   resources :users, :only =>[:show]
+  # do
+  #   resources :reviews
+  # end
 
   #devise_for :users
   #og, maybe add back!

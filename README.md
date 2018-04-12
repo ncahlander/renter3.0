@@ -23,6 +23,37 @@ Things you may want to cover:
 
 * ...
 
+<% if @profile.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+    <ul>
+    <% profile.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<!-- _form
+<!-- <%= form_with model: @review, local: true do |form| %> -->
+
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@review.errors.count, "error") %> prohibited
+      this review from being saved:
+    </h2>
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %> -->
+
+<!-- <%= form_with(model: [@user, @user.reviews.build]) do |form|
+ https://www.youtube.com/watch?v=5OTgURghwdU  -->
+
 add_column :reviews, :date , :string
 add_column :reviews, :notice, :boolean
 add_column :reviews, :rentLeft , :boolean
