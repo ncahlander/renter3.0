@@ -5,3 +5,8 @@
   <%= user.lastName %><br/>
   <%= user.email %><br/>
 <% end %>
+
+<!-- If search for users comes up blank -->
+<% if @users.blank? %>
+  <h4>There are no accounts containing the email, username, first, or last name: <%= params[:search] %>.</h4>
+<% end %>

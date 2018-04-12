@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
   def index
+    @users = Users.all
+    if params[:search]
+      @users = Users.search(params[:search]).order("created_at DESC")
+    else
+      @users = Users.all.order("created_at DESC")
+    end
   end
   # def show
   # @user = User.find_by_email(params[:id])
@@ -8,8 +14,7 @@ class UsersController < ApplicationController
 
   def show
   @user = User.find(params[:id])
-
-end
+  end
   def sign
     @users = User.all
     if params[:search]
