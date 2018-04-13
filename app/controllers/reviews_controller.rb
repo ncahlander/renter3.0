@@ -14,7 +14,8 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+    @review = Review.new(params[:id])
+
   end
 
   def edit
@@ -23,12 +24,17 @@ class ReviewsController < ApplicationController
 
   #create action for ruby stuff
   def create
-    @review = Review.new(reviews_params)
+
+    @profile = Profile.find(params[:profile_id])
+    #@review = Review.new(reviews_params, :title => @user.firstName)
+    @review = @profile.reviews.build(reviews_params)
+    @review.user_id = current_user.id
 
     if @review.save
-      redirect_to @review
+      redirect_to @profile, notice: "Review saved, thank you!"
     else
-      render 'new'
+      redirect_to @profile, notice: "Review was not saved, please check to see if all boxes are filled out."
+      # render 'new'
     end
   end
   #   @review = Review.new(reviews_params)
@@ -59,7 +65,7 @@ class ReviewsController < ApplicationController
 
   private
   def reviews_params
-    params.require(:review).permit(:title, :text, :rentLeftAmount, :nSFNum)
+    params.require(:review).permit(:title, :text)
     #prevents wrongful assignment in database if fields off
   end
 end
