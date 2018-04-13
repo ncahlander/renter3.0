@@ -5,7 +5,7 @@ application up and running.
 
 LUCCA
 reviews functionality
-push to heroku
+DONE push to heroku
 STRETch search bar
 separate user accounts
 
@@ -21,25 +21,7 @@ notifications
 <%= if @profile.landlord %>
 <%= link_to 'Request a review!', '#' %> --> -->
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
 <%= form_with(model: [@profile, @profile.reviews.build]) do |f| %>
