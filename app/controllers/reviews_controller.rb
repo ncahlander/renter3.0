@@ -14,7 +14,8 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+    @review = Review.new(params[:id])
+
   end
 
   def edit
@@ -30,9 +31,9 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
 
     if @review.save
-      redirect_to @profile, notice: "saaved"
+      redirect_to @profile, notice: "Review saved, thank you!"
     else
-      redirect_to @profile, notice: "did not save!"
+      redirect_to @profile, notice: "Review was not saved, please check to see if all boxes are filled out."
       # render 'new'
     end
   end

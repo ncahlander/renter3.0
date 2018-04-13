@@ -3,40 +3,31 @@
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
 
+<%= link_to 'create', new_review_path%>
+
+
+
+
 <br>
 <br>
 <h2>Reviews</h2>
 <br>
 
-  <%= form_with(model: [@profile, @profile.reviews.build]) do |form| %>
-  <!-- add error box again -->
+<%= render 'reviews/form', profile: @profile %>
 
-    <p>
-      <%= form.label :title %><br>
-      <!-- <%= form.text_field :text %> -->
-      <!-- <%= form.text_field :title %> -->
-    </p>
-
-
-    <p>
-      <%= form.label :tenant %><br>
-      <%= form.text_field :text %>
-    </p>
-    <p>
-      <%= form.submit %>
-    </p>
-  <% end %>
 <br>
+<%= @profile.user_id %>
 <h1> previous reviews: </h1>
 <hr>
-<% @reviews = Review.all %>
+<% if current_user.id == 15 %>
 <% @reviews.each do |review| %>
-  <% if review.user_id == current_user.id %>
+    <%= @profile.user_id %>
+
     <%= review.user_id %>
+
     <%= review.profile_id %>
     <br>
 
     <%= review.text %><br/>
-
-  <% end %>
+<% end %>
 <% end %>
