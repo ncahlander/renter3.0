@@ -41,8 +41,9 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    # @profile = Profile.find(params[:19])
     respond_to do |format|
-      if @profile.update(profile_params)
+      if @profile.update(profile_param2)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
@@ -71,5 +72,8 @@ class ProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.fetch(:profile, {})
+    end
+    def profile_param2
+      params.require(:profile).permit(:access_allowed)
     end
 end

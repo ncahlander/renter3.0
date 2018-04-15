@@ -5,8 +5,54 @@
 
 <%= link_to 'create', new_review_path%>
 
+<%= form_with(model: @profile) do |form| %>
+<p>
+  <%= form.label :allow_access %>
+  <%= form.check_box :access_allowed  %>
+</p>
 
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+profile
+<%= @profile.user_id %>
+me
+<%= current_user.id %>
 
+<% if @profile.access_allowed %>
+<h2>hello, <%= current_user.firstName %>, it work</h2>
+<h1> previous reviews: </h1>
+<hr>
+<% @reviews.each do |review| %>
+my id:
+<%= current_user.id %> <br>
+user that reviewed:
+<%= review.user_id %> <br>
+user id of profile's user:
+<%= @profile.user_id %> <br>
+profile id:
+<%= review.profile_id %>
+<br>
+
+    <%= review.text %><br/>
+<% end %>
+<% end %>
+
+<h1> check </h1>
+<% @reviews.each do |review| %>
+    my id:
+    <%= current_user.id %> <br>
+    user that reviewed:
+    <%= review.user_id %> <br>
+    user id of profile's user:
+    <%= @profile.user_id %> <br>
+    profile id:
+    <%= review.profile_id %>
+    <br>
+
+    <%= review.text %><br/>
+<% end %>
 
 <br>
 <br>
@@ -17,17 +63,3 @@
 
 <br>
 <%= @profile.user_id %>
-<h1> previous reviews: </h1>
-<hr>
-<% if current_user.id == 15 %>
-<% @reviews.each do |review| %>
-    <%= @profile.user_id %>
-
-    <%= review.user_id %>
-
-    <%= review.profile_id %>
-    <br>
-
-    <%= review.text %><br/>
-<% end %>
-<% end %>

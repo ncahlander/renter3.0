@@ -9,8 +9,24 @@ DONE push to heroku
 STRETch search bar
 separate user accounts
 
+<% if @profile.allowedAccess %>
+  <h1> previous reviews: </h1>
+  <hr>
+  <% if current_user.id == 15 %>
+  <% @reviews.each do |review| %>
+      <%= @profile.user_id %>
+
+      <%= review.user_id %>
+
+      <%= review.profile_id %>
+      <br>
+
+      <%= review.text %><br/>
+  <% end %>
+  <% end %>
+<% end %>
 NICOLE
-profile specific reviews
+profile specific reviews *
 button to release reviews to landlord
 button to request Reviews
 STRETCH
