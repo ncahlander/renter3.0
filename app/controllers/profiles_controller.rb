@@ -41,7 +41,12 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
-    # @profile = Profile.find(params[:19])
+    #need a way to find the right profile
+    # @profile = Profile.find(11)
+    #in the future, ideal that the profile id and user id same
+    lord = current_user.id-8
+    Viewers.create(pageAccess: true, profile: lord, user: profile_id)
+    @profile = Profile.find(lord)
     respond_to do |format|
       if @profile.update(profile_param2)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pageAccess: false
+  user: one
+  profile: one
+
+two:
+  pageAccess: false
+  user: two
+  profile: two
