@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
-
+  # notice: "no yikes"
+  #
+  load_and_authorize_resource param_method: :reviews_params
+  puts "HELLOMOTOTO2OO1"
+  # notice: "yikes"
   #before_action :authenticate_user!
 #controller for all review related actions for the form
   def index
@@ -68,4 +72,5 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:title, :text)
     #prevents wrongful assignment in database if fields off
   end
+
 end

@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /profiles
@@ -44,8 +45,13 @@ class ProfilesController < ApplicationController
     #need a way to find the right profile
     # @profile = Profile.find(11)
     #in the future, ideal that the profile id and user id same
+    @profile = Profile.find(params[:id])
+    userId = @profile.user_id
     lord = current_user.id-8
-    Viewers.create(pageAccess: true, profile: lord, user: profile_id)
+    # @viewer = Viewer.new(params[:id])
+    # #access to me for user of current page
+    # Viewer.create(pageAccess: true, profile: lord, user: userId)
+
     @profile = Profile.find(lord)
     respond_to do |format|
       if @profile.update(profile_param2)
