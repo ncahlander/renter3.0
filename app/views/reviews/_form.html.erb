@@ -1,133 +1,182 @@
-
-
 <%= form_with(model: [@profile, @profile.reviews.build]) do |form| %>
+  <p>
+    <%= form.label :Reviewer %><br>
+    <%= current_user.firstName  %>
+    <%= current_user.lastName %>
+  </p>
 
   <p>
     <%= form.label :tenant %><br>
-    <%= form.text_field :text %>
+    <%= @profile.id %>
   </p>
 
-    <p>
-      <%= form.label :date %><br>
-      <%= form.date_field :date %>
-    </p>
+  <p>
+    <%= form.label :Date %><br>
+    <%= Time.now.strftime("%d/%m/%Y %H:%M") %>
+  </p>
+
+  <ol>
+    <li>
+      <%= form.label :Proper_notice_given? %><br>
+      <%= form.label :notice, "Yes", :value => "Yes"  %>
+     <%= form.radio_button :notice, true%>
+     <%= form.label :notice, "No", :value => "No" %>
+     <%= form.radio_button :notice, false %>
+   </li>
+
+    <li>
+      <%= form.label :Is_tenant_liable_for_rent_or_any_unpaid_amount? %><br>
+      <%= form.label :rentLeft, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :rentLeft, true%>
+      <%= form.label :rentLeft, "No", :value => "No" %>
+      <%= form.radio_button :rentLeft, false %>
+    </li>
 
     <p>
-      <%= form.label :notice %><br>
-      <%= form.check_box :notice  %>
-    </p>
-
-    <p>
-      <%= form.label :rentLeft %><br>
-      <%= form.check_box :rentLeft  %>
-    </p>
-
-    <p>
-      <%= form.label :rentLeftAmount %><br>
+      <%= form.label :Enter_amount_of_unpaid_rent %><br>
       <%= form.number_field :rentLeftAmount %>
     </p>
 
-    <p>
-      <%= form.label :late %><br>
-      <%= form.check_box :late  %>
-    </p>
+    <li>
+      <%= form.label :Any_late_payments_or_3_day_notices? %><br>
+      <%= form.label :late, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :late, true%>
+      <%= form.label :late, "No", :value => "No" %>
+      <%= form.radio_button :late, false %>
+    </li>
 
     <p>
-      <%= form.label :lateThreeDayNum %><br>
+      <%= form.label :Enter_amount_of_3_day_notices %><br>
       <%= form.number_field :lateThreeDayNum %>
     </p>
 
     <p>
-      <%= form.label :latePaymentNum %><br>
+      <%= form.label :Enter_amount_of_late_payments_here %><br>
       <%= form.number_field :latePaymentNum %>
     </p>
 
-    <p>
-      <%= form.label :nSF %><br>
-      <%= form.check_box :nSF  %>
-    </p>
+    <li>
+      <%= form.label :Any_NSF_checks? %><br>
+      <%= form.label :nSF, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :late, true%>
+      <%= form.label :nSF, "No", :value => "No" %>
+      <%= form.radio_button :nSF, false %>
+    </li>
 
     <p>
-      <%= form.label :nsfNum %><br>
+      <%= form.label :Enter_amount_of_NSF_checks %><br>
       <%= form.number_field :nsfNum %>
     </p>
 
-    <p>
-      <%= form.label :damages %><br>
-      <%= form.check_box :damages  %>
-    </p>
+    <li>
+      <%= form.label :Any_documented_damages? %><br>
+      <%= form.label :damages, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :damages, true%>
+      <%= form.label :damages, "No", :value => "No" %>
+      <%= form.radio_button :damages, false %>
+    </li>
 
     <p>
-      <%= form.label :damagesDescription %><br>
+      <%= form.label :Please_explain_or_enter_NA %><br>
       <%= form.text_field :damagesDescription %>
     </p>
 
-    <p>
-      <%= form.label :complaintsFiled %><br>
-      <%= form.check_box :complaintsFiled  %>
-    </p>
+    <li>
+      <%= form.label :Any_documented_complaints? %><br>
+      <%= form.label :complaintsFiled, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :complaintsFiled, true%>
+      <%= form.label :complaintsFiled, "No", :value => "No" %>
+      <%= form.radio_button :complaintsFiled, false %>
+    </li>
 
     <p>
-      <%= form.label :complaintDescription %><br>
+      <%= form.label :Please_explain_or_enter_NA %><br>
       <%= form.text_field :complaintDescription %>
     </p>
 
-    <p>
-      <%= form.label :undocumentedHousemates %><br>
-      <%= form.check_box :undocumentedHousemates  %>
-    </p>
+    <li>
+      <%= form.label :Any_unauthorized_tenants_or_pets? %><br>
+      <%= form.label :undocumentedHousemates, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :undocumentedHousemates, true%>
+      <%= form.label :undocumentedHousemates, "No", :value => "No" %>
+      <%= form.radio_button :undocumentedHousemates, false %>
+    </li>
+
+    <li>
+      <%= form.label :Did_tenant_share_with_a_co_tenant? %><br>
+      <%= form.label :coTenants, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :coTenants, true%>
+      <%= form.label :coTenants, "No", :value => "No" %>
+      <%= form.radio_button :coTenants, false %>
+    </li>
+
+    <li>
+      <%= form.label :Were_they_on_a_written_rental_agreement? %><br>
+      <%= form.label :rentalStatus, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :rentalStatus, true%>
+      <%= form.label :rentalStatus, "No", :value => "No" %>
+      <%= form.radio_button :rentalStatus, false %>
+    </li>
+
+    <li>
+      <%= form.label :Has_tenant_ever_been_asked_to_vacate? %><br>
+      <%= form.label :evicted, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :evicted, true%>
+      <%= form.label :evicted, "No", :value => "No" %>
+      <%= form.radio_button :evicted, false %>
+    </li>
+
+    <li>
+      <%= form.label :Would_you_re_rent_to_them? %><br>
+      <%= form.label :rentAgain, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :rentAgain, true%>
+      <%= form.label :rentAgain, "No", :value => "No" %>
+      <%= form.radio_button :rentAgain, false %>
+    </li>
+
+    <li>
+      <%= form.label :Was_deposit_refunded? %><br>
+      <%= form.label :depositRefund, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :depositRefund, true%>
+      <%= form.label :depositRefund, "No", :value => "No" %>
+      <%= form.radio_button :depositRefund, false %>
+    </li>
+
+    <li>
+      <%= form.label :Do_they_have_a_pet? %><br>
+      <%= form.label :pets, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :pets, true%>
+      <%= form.label :pets, "No", :value => "No" %>
+      <%= form.radio_button :pets, false %>
+    </li>
 
     <p>
-      <%= form.label :coTenants %><br>
-      <%= form.check_box :coTenants  %>
-    </p>
-
-    <p>
-      <%= form.label :rentalStatus %><br>
-      <%= form.check_box :rentalStatus  %>
-    </p>
-
-    <p>
-      <%= form.label :evicted %><br>
-      <%= form.check_box :evicted  %>
-    </p>
-
-    <p>
-      <%= form.label :rentAgain %><br>
-      <%= form.check_box :rentAgain  %>
-    </p>
-
-    <p>
-      <%= form.label :depositRefund %><br>
-      <%= form.check_box :depositRefund  %>
-    </p>
-
-    <p>
-      <%= form.label :pets %><br>
-      <%= form.check_box :pets  %>
-    </p>
-
-    <p>
-      <%= form.label :petType %><br>
+      <%= form.label :Enter_pet_type_or_types_or_enter_NA %><br>
       <%= form.text_field :petType %>
     </p>
 
-    <p>
-      <%= form.label :rentAmount %><br>
+    <li>
+      <%= form.label :What_was_the_rent_amount? %><br>
       <%= form.number_field :rentAmount %>
-    </p>
+    </li>
+
+    <li>
+      <%= form.label :Were_they_on_a_lease? %><br>
+      <%= form.label :lease, "Yes", :value => "Yes"  %>
+      <%= form.radio_button :lease, true%>
+      <%= form.label :lease, "No", :value => "No" %>
+      <%= form.radio_button :lease, false %>
+    </li>
+
 
     <p>
-      <%= form.label :lease %><br>
-      <%= form.check_box :lease  %>
+      <%= form.label :Any_additional_notes_on_this_tenant? %><br>
+      <%= form.text_area :tenantNotes %>
     </p>
 
+    <!-- TODO missing move in and out dates -->
 
-    <p>
-      <%= form.label :tenantNotes %><br>
-      <%= form.text_field :tenantNotes %>
-    </p>
-
+  </ol>
 
     <p>
       <%= form.submit %>

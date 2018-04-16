@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     @review = @profile.reviews.build(reviews_params)
     @review.user_id = current_user.id
 
-    if @review.save
+    if @review.save!
       redirect_to @profile, notice: "Review saved, thank you!"
     else
       redirect_to @profile, notice: "Review was not saved, please check to see if all boxes are filled out."
@@ -65,7 +65,11 @@ class ReviewsController < ApplicationController
 
   private
   def reviews_params
-    params.require(:review).permit(:title, :text)
+    params.require(:review).permit(:notice, :rentLeft, :rentLeftAmount,
+      :late, :lateThreeDayNum, :latePaymentNum, :nSF, :nsfNum, :damages,
+      :damagesDescription, :complaintsFiled, :complaintDescription,
+      :undocumentedHousemates, :coTenants, :rentalStatus, :evicted,
+      :rentAgain, :depositRefund, :pets, :petType, :rentAmount, :lease, :tenantNotes)
     #prevents wrongful assignment in database if fields off
   end
 end
