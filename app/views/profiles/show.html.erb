@@ -8,6 +8,7 @@
 <%= link_to 'Back', profiles_path %>
 
 <%= link_to 'create', new_review_path%>
+<h1><%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %></h1>
 
 <%= form_with(model: @profile) do |form| %>
 <p>
@@ -21,8 +22,11 @@
 <% end %>
 profile
 <%= @profile.id %>
+<%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %>
 me
 <%= current_user.id %>
+<%= current_user.firstName %> <%= current_user.lastName %>
+
 
 <% if @profile.access_allowed %>
 <h2>hello, <%= current_user.firstName %>, it work</h2>
@@ -45,25 +49,63 @@ profile id:
 
 <h1> check </h1>
 <% @reviews.each do |review| %>
-    my id:
-    <%= current_user.id %> <br>
-    user that reviewed:
-    <%= review.user_id %> <br>
-    user id of profile's user:
-    <%= @profile.user_id %> <br>
-    profile id:
-    <%= review.profile_id %>
+
+    <h4> Review of <%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %> by <%= User.find(review.user_id).firstName %> <%= User.find(review.user_id).lastName %> </h4>
+    Reviewed on: add date field <br>
+    Proper notice given:
+    <%= review.notice %> <br>
+    Is tenant liable for rent or any unpaid amount:
+    <%= review.rentLeft %> <br>
+    Amount of unpaid rent:
+    <%= review.rentLeftAmount %> <br>
+    Any late payments or 3 day notices:
+    <%= review.late %> <br>
+    Amount of 3 day notices:
+    <%= review.lateThreeDayNum %> <br>
+    Amount of late payments:
+    <%= review.latePaymentNum %> <br>
+    Any NSF (non-sufficient funds) checks:
+    <%= review.nSF %> <br>
+    Amount of NSF checks:
+    <%= review.nsfNum %> <br>
+    Any documented damages:
+    <%= review.damages %> <br>
+    Damage description:
+    <%= review.damagesDescription %> <br>
+    Any documented complaints:
+    <%= review.complaintsFiled %> <br>
+    Complaint description:
+    <%= review.complaintDescription %> <br>
+    Any unauthorized tenants or pets:
+    <%= review.undocumentedHousemates %> <br>
+    Did tenant sahre with a co-tenant?
+    <%= review.coTenants %> <br>
+    Were they on a written rental agreement?
+    <%= review.rentalStatus %> <br>
+    Have they ever been asked to vacate?
+    <%= review.evicted %> <br>
+    Would you re-rent to them?
+    <%= review.rentAgain %> <br>
+    Was deposit refunded?
+    <%= review.depositRefund %> <br>
+    Do they have a pet?
+    <%= review.pets %> <br>
+    Pet type(s):
+    <%= review.petType %> <br>
+    What was the rent amount:
+    <%= review.rentAmount %> <br>
+    Were they on a lease:
+    <%= review.lease %> <br>
+    Additional notes on tenant:
+    <%= review.tenantNotes %> <br>
+    Move-in date:
+    <br>
+    Move-out date:
+    <br>
+
     <br>
 
     <%= review.text %><br/>
 <% end %>
 
-<br>
-<br>
-<h2>Reviews</h2>
-<br>
-
 <%= render 'reviews/form', profile: @profile %>
-
-<br>
-<%= @profile.user_id %>
