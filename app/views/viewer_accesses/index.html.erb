@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Viewer Accesses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @viewer_accesses.each do |viewer_access| %>
+      <tr>
+        <td><%= link_to 'Show', viewer_access %></td>
+        <td><%= link_to 'Edit', edit_viewer_access_path(viewer_access) %></td>
+        <td><%= link_to 'Destroy', viewer_access, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Viewer Access', new_viewer_access_path %>

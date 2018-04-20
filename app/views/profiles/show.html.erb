@@ -9,17 +9,28 @@
 
 <%= link_to 'create', new_review_path%>
 <h1><%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %></h1>
+name:
+<%= current_user.firstName %>
+<%= current_user.lastName %>
+<%= current_user.username %>
+
+
+<!-- <%= render 'viewer_accesses/form', viewer_access: @viewer_access %> -->
 
 <%= form_with(model: @profile) do |form| %>
-<p>
-  <%= form.label :allow_access %>
-  <%= form.check_box :access_allowed  %>
-</p>
-
+   <!-- <% if !can? :access_given, @profile %> -->
+    <p>
+      <%= form.label :allow_access %>
+      <%= form.check_box :access_allowed  %>
+    </p>
+    <!-- <%= render 'form', viewer_access: @viewer_access %> -->
   <div class="actions">
     <%= form.submit %>
+    <% puts "did that" %>
   </div>
+  <% end %>
 <% end %>
+
 profile
 <%= @profile.id %>
 <%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %>
@@ -108,4 +119,8 @@ profile id:
     <%= review.text %><br/>
 <% end %>
 
+<% if current_user.id == @profile.user_id  %>
+it u, dingus
+<%else %>
 <%= render 'reviews/form', profile: @profile %>
+<% end %>

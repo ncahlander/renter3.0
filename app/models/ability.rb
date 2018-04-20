@@ -10,10 +10,20 @@ class Ability
       else
         puts "ok"
         puts user.id
-        can :manage, Profile, user_id: user.id
+        this = user.id-1
+        puts "user - 1"
+        puts this
         can :read, Profile
+        #can :update, Profile, user_id: user.id
+        can :update, Profile
+        can :destroy, Profile, user_id: user.id
+      #  can :access_given, ViewerAccess, user_id: user.id
+        #can :read, Profile, user_id: user.id
+        can :manage, ViewerAccess
+        can :read, Review
         can :create, Review, user_id: user.id
         can :edit, Review, user_id: user.id
+        can :destroy, Review, user_id: user.id
         #can :read, Review, user_id: user.id
         #can :read, Review, user_id: 11
         #if review.user_id matches user.id of passed in user, they can

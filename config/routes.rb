@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :viewer_accesses
   resources :profiles do
     resources :reviews
   end

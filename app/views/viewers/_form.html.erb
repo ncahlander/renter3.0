@@ -1,0 +1,17 @@
+<%= form_with(model: viewer, local: true) do |form| %>
+  <% if viewer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(viewer.errors.count, "error") %> prohibited this viewer from being saved:</h2>
+
+      <ul>
+      <% viewer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
