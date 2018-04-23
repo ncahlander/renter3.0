@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /profiles
@@ -46,12 +47,41 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+
+
+    profile = Profile.find(params[:id]) #gets profile id
+    puts "this is"
+    puts profile.user_id
+    puts profile.id
+
+    #user = User.find(params[:id])
+    puts "curr user"
+    puts current_user.id
+    puts "checked"
+
+    if profile.id != current_user.id
+      puts "hello there"
+      #authorize! :allow_access, @profile if params[:profile][:allow_access] end
+      puts "authorized"
+      respond_to do |format|
+        if @profile.update(profile_param2)
+          format.html { redirect_to(@profile) and return, notice: 'Profile was successfully updated.' }
+          format.json { render :show, status: :ok, location: @profile }
+        end
+      end
+    end
+
     #need a way to find the right profile
     # @profile = Profile.find(11)
     #in the future, ideal that the profile id and user id same
-    lord = current_user.id-8
-    Viewers.create(pageAccess: true, profile: lord, user: profile_id)
-    @profile = Profile.find(lord)
+    @profile = Profile.find(params[:id])
+    # userId = @profile.user_id
+    # lord = current_user
+    # # @viewer = Viewer.new(params[:id])
+    # # #access to me for user of current page
+    # # Viewer.create(pageAccess: true, profile: lord, user: userId)
+    #
+    # @profile = Profile.find(lord)
     respond_to do |format|
       if @profile.update(profile_param2)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }

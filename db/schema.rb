@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423042959) do
+ActiveRecord::Schema.define(version: 20180418204104) do
+
+  create_table "accesses", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "user_id"
+    t.boolean "access_given"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
@@ -87,10 +95,19 @@ ActiveRecord::Schema.define(version: 20180423042959) do
     t.string "firstName"
     t.string "lastName"
     t.string "role"
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "viewer_accesses", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "user_id"
+    t.boolean "access_given"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "viewers", force: :cascade do |t|

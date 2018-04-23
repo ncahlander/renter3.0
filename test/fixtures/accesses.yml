@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile_id: 
+  user_id: 
+  access_given: false
+
+two:
+  profile_id: 
+  user_id: 
+  access_given: false
