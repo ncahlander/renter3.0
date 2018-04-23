@@ -1,9 +1,10 @@
 <% @users = User.all %>
 <% @users.each do |user| %>
-  <%= user.username %><br/>
+  <%= link_to "view profile", user.profile%>
   <%= user.firstName %><br/>
   <%= user.lastName %><br/>
   <%= user.email %><br/>
+  <br>
 <% end %>
 
 <!-- If search for users comes up blank -->

@@ -21,10 +21,9 @@
 
 
         <!-- Search bar -->
-        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+        <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
           <%= submit_tag "Search", :name => nil %>
-
         <% end %>
 
         <nav>

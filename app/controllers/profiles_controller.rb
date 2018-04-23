@@ -5,6 +5,11 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     @profiles = Profile.all
+    if params[:search]
+      @profiles = Profile.search(params[:search])
+    else
+      @profiles = Profile.all
+    end
   end
 
   # GET /profiles/1

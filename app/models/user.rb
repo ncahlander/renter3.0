@@ -20,9 +20,4 @@ class User < ApplicationRecord
   # devise :database_authenticatable, :registerable, :confirmable,
   #        :recoverable, :rememberable, :trackable, :validatable
 
-
-  def self.search(search)
-    where("email LIKE ? OR username LIKE ? OR firstName LIKE ? OR lastName LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
-  end
-
 end

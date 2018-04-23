@@ -5,4 +5,13 @@ class Profile < ApplicationRecord
   has_many :viewers
   has_many :users, through: :viewers
 
+
+  # <%= User.find(profile.user_id).firstName %>
+  # <%= User.find(profile.user_id).lastName %>
+  # <%= User.find(profile.user_id).email %>
+
+  def self.search(search)
+    where("id LIKE ?", "%#{search}%")
+  end
+
 end
