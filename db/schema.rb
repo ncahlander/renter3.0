@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418204104) do
+ActiveRecord::Schema.define(version: 20180424214658) do
 
   create_table "accesses", force: :cascade do |t|
     t.integer "profile_id"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 20180418204104) do
     t.string "tenantNotes"
     t.integer "user_id"
     t.integer "profile_id"
+    t.date "moveIn"
+    t.date "moveOut"
     t.index ["profile_id"], name: "index_reviews_on_profile_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

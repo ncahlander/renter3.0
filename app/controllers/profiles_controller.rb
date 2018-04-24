@@ -65,7 +65,7 @@ class ProfilesController < ApplicationController
       puts "authorized"
       respond_to do |format|
         if @profile.update(profile_param2)
-          format.html { redirect_to(@profile) and return, notice: 'Profile was successfully updated.' }
+          format.html { redirect_to(@profile) and return notice 'Profile was successfully updated.' }
           format.json { render :show, status: :ok, location: @profile }
         end
       end
