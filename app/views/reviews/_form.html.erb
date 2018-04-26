@@ -52,7 +52,7 @@
     </p>
 
     <p>
-      <%= form.label :Enter_amount_of_late_payments_here %><br>
+      <%= form.label :Enter_amount_of_late_payments %><br>
       <%= form.number_field :latePaymentNum %>
     </p>
 
@@ -78,7 +78,7 @@
     </li>
 
     <p>
-      <%= form.label :Please_explain_or_enter_NA %><br>
+      <%= form.label :Please_explain %><br>
       <%= form.text_field :damagesDescription %>
     </p>
 
@@ -91,7 +91,7 @@
     </li>
 
     <p>
-      <%= form.label :Please_explain_or_enter_NA %><br>
+      <%= form.label :Please_explain %><br>
       <%= form.text_field :complaintDescription %>
     </p>
 
@@ -128,7 +128,7 @@
     </li>
 
     <li>
-      <%= form.label :Would_you_re_rent_to_them? %><br>
+      <%= form.label :Would_you_rent_to_them_again? %><br>
       <%= form.label :rentAgain, "Yes", :value => "Yes"  %>
       <%= form.radio_button :rentAgain, true%>
       <%= form.label :rentAgain, "No", :value => "No" %>
@@ -152,7 +152,7 @@
     </li>
 
     <p>
-      <%= form.label :Enter_pet_type_or_types_or_enter_NA %><br>
+      <%= form.label :Enter_pet_type_or_types %><br>
       <%= form.text_field :petType %>
     </p>
 
@@ -174,15 +174,17 @@
       <%= form.label :Any_additional_notes_on_this_tenant? %><br>
       <%= form.text_area :tenantNotes %>
     </p>
+
+    <p>
       <%= form.label :Tenant_move_in_date %><br>
       <%= form.date_field :moveIn %>
+    </p>
 
+    <p>
       <%= form.label :Tenant_move_out_date %><br>
       <%= form.date_field :moveOut %>
-    <p>
-
-
     </p>
+
 
 
   </ol>
