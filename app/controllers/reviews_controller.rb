@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   #before_action :authenticate_user!
 #controller for all review related actions for the form
   def index
-    @reviews = Review.all
+    @review = Review.all
     #provide ALL the reivew "objects"
   end
 
@@ -73,7 +73,7 @@ class ReviewsController < ApplicationController
       :late, :lateThreeDayNum, :latePaymentNum, :nSF, :nsfNum, :damages,
       :damagesDescription, :complaintsFiled, :complaintDescription,
       :undocumentedHousemates, :coTenants, :rentalStatus, :evicted,
-      :rentAgain, :depositRefund, :pets, :petType, :rentAmount, :lease, :tenantNotes)
+      :rentAgain, :depositRefund, :pets, :petType, :rentAmount, :lease, :tenantNotes, :moveIn, :moveOut)
     #prevents wrongful assignment in database if fields off
   end
 
