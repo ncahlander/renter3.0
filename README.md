@@ -3,6 +3,12 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+<%= form_with(model: [@profile, @profile.viewer_accesses.build]) do |form| %>
+  <%= form.label :allow_access %>
+  <%= form.check_box :access_allowed  %>
+<% end %>
+<!-- <% if current_user.id != @profile.user_id %>
+print -->
 LUCCA
 reviews functionality
 DONE push to heroku

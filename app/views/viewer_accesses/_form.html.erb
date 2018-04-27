@@ -1,7 +1,15 @@
-<%= form_with(model: @viewer_access, local: true) do |form| %>
+<%= form_with(model: viewer_access, local: true) do |form| %>
 
-profile
 
+
+<%= form.label :viewer %>
+<%= form.number_field :viewing_id %>
+<br>
+<%= form.label :viewable %>
+<%= form.number_field :viewable_profile %>
+<br>
+<%= form.label :allow_access %>
+<%= form.check_box :access_given  %>
   <div class="actions">
     <%= form.submit %>
   </div>

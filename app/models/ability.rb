@@ -15,7 +15,7 @@ class Ability
         puts this
         can :read, Profile
         #can :update, Profile, user_id: user.id
-        can :update, Profile
+        can :update, Profile, user_id:user.id
         can :destroy, Profile, user_id: user.id
       #  can :access_given, ViewerAccess, user_id: user.id
         #can :read, Profile, user_id: user.id

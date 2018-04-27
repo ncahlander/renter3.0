@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418204104) do
+ActiveRecord::Schema.define(version: 20180427064241) do
+
+  create_table "accessers", force: :cascade do |t|
+    t.boolean "access_granted"
+    t.integer "viewing_id"
+    t.integer "viewable_profile"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "profile_id"
+    t.index ["viewable_profile"], name: "index_accessers_on_viewable_profile"
+    t.index ["viewing_id"], name: "index_accessers_on_viewing_id"
+  end
 
   create_table "accesses", force: :cascade do |t|
     t.integer "profile_id"
@@ -105,6 +116,8 @@ ActiveRecord::Schema.define(version: 20180418204104) do
     t.boolean "access_given"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "viewing_id"
+    t.integer "viewable_profile"
   end
 
   create_table "viewers", force: :cascade do |t|

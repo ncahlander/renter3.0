@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @reviews = Review.where("profile_id = ?", params[:id])
+    #@accessers = Accesser.where("profile_id = ?", params[:id])
   end
 
   # GET /profiles/new
@@ -53,18 +54,18 @@ class ProfilesController < ApplicationController
     puts "curr user"
     puts current_user.id
     puts "checked"
-
-    if profile.id != current_user.id
-      puts "hello there"
-      #authorize! :allow_access, @profile if params[:profile][:allow_access] end
-      puts "authorized"
-      respond_to do |format|
-        if @profile.update(profile_param2)
-          format.html { redirect_to(@profile) and return, notice: 'Profile was successfully updated.' }
-          format.json { render :show, status: :ok, location: @profile }
-        end
-      end
-    end
+    #
+    # if profile.id != current_user.id
+    #   puts "hello there"
+    #   #authorize! :allow_access, @profile if params[:profile][:allow_access] end
+    #   puts "authorized"
+    #   respond_to do |format|
+    #     if @profile.update(profile_param2)
+    #       format.html { redirect_to(@profile) and return, notice: 'Profile was successfully updated.' }
+    #       format.json { render :show, status: :ok, location: @profile }
+    #     end
+    #   end
+    # end
 
     #need a way to find the right profile
     # @profile = Profile.find(11)

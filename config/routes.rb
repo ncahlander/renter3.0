@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :viewer_accesses
   resources :profiles do
+    resources :accessers
     resources :reviews
   end
   devise_for :users, :path_prefix => 'd'

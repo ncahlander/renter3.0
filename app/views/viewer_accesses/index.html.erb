@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Viewer Accesses</h1>
+<h1>Viewer Accesses!</h1>
 
 <table>
   <thead>
@@ -12,6 +12,8 @@
   <tbody>
     <% @viewer_accesses.each do |viewer_access| %>
       <tr>
+        <td>viewer: <%= viewer_access.viewing_id %></td>
+        <td>viewable: <%= viewer_access.viewable_profile %></td>
         <td><%= link_to 'Show', viewer_access %></td>
         <td><%= link_to 'Edit', edit_viewer_access_path(viewer_access) %></td>
         <td><%= link_to 'Destroy', viewer_access, method: :delete, data: { confirm: 'Are you sure?' } %></td>

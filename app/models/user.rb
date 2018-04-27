@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :accesses
-  has_many :profiles, through: :accesses
+  has_many :accessers, dependent: :destroy
+  #has_many :profiles, through: :viewer_accesses
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # devise :database_authenticatable, :registerable, :confirmable,
