@@ -6,4 +6,13 @@ class Profile < ApplicationRecord
   has_many :accessers, dependent: :destroy
   #has_many :users, through: :viewer_accesses
 
+
+  # <%= User.find(profile.user_id).firstName %>
+  # <%= User.find(profile.user_id).lastName %>
+  # <%= User.find(profile.user_id).email %>
+
+  def self.search(search)
+    where("id LIKE ? OR firstName LIKE ?", "%#{search}%", "%#{search}%")
+  end
+
 end

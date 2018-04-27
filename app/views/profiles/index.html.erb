@@ -15,11 +15,18 @@
         <td><%= profile.user_id %></td>
         <td><%= link_to 'Show', profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br>
       </tr>
+      <%= User.find(profile.user_id).firstName %>
+      <%= User.find(profile.user_id).lastName %>,
+      <%= User.find(profile.user_id).email %>
     <% end %>
   </tbody>
 </table>
+
+<% if @profiles.blank? %>
+  <h4>There are no users that match <%= params[:search] %>.</h4>
+<% end %>
 
 <br>
 

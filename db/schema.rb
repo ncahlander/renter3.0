@@ -31,25 +31,16 @@ ActiveRecord::Schema.define(version: 20180427064241) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "body"
-    t.integer "review_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_comments_on_review_id"
-  end
-
   create_table "profiles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.boolean "access_allowed"
+    t.string "firstName"
+    t.string "lastName"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "numOfThing"
@@ -79,6 +70,8 @@ ActiveRecord::Schema.define(version: 20180427064241) do
     t.string "tenantNotes"
     t.integer "user_id"
     t.integer "profile_id"
+    t.date "moveIn"
+    t.date "moveOut"
     t.index ["profile_id"], name: "index_reviews_on_profile_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -103,6 +96,7 @@ ActiveRecord::Schema.define(version: 20180427064241) do
     t.string "username"
     t.string "firstName"
     t.string "lastName"
+    t.string "role"
     t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
