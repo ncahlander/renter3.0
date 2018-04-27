@@ -34,6 +34,9 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(profile_params)
 
+    @profile.firstName = current_user.firstName
+    @profile.lastName = current_user.lastName
+
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }

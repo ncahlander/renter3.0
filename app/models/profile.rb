@@ -12,7 +12,7 @@ class Profile < ApplicationRecord
   # <%= User.find(profile.user_id).email %>
 
   def self.search(search)
-    where("id LIKE ? OR firstName LIKE ?", "%#{search}%", "%#{search}%")
+    where("firstName LIKE ? OR lastName LIKE ? OR firstName OR (firstName || ' ' || lastName) LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 
 end

@@ -14,6 +14,8 @@ name:
 <%= current_user.lastName %>
 <%= current_user.username %>
 
+THIS IS LAST NAME
+<%= @profile.lastName %>
 <% if current_user.id != @profile.user_id %>
 <%= form_with(model: [@profile, @profile.accessers.build]) do |form| %>
   <%= form.label :allow_aaccess %>
