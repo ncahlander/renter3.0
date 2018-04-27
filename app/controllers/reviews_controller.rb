@@ -30,7 +30,6 @@ class ReviewsController < ApplicationController
   def create
 
     @profile = Profile.find(params[:profile_id])
-    #@review = Review.new(reviews_params, :title => @user.firstName)
     @review = @profile.reviews.build(reviews_params)
     @review.user_id = current_user.id
 
@@ -38,17 +37,8 @@ class ReviewsController < ApplicationController
       redirect_to @profile, notice: "Review saved, thank you!"
     else
       redirect_to @profile, notice: "Review was not saved, please check to see if all boxes are filled out."
-      # render 'new'
     end
   end
-  #   @review = Review.new(reviews_params)
-  #
-  #   if @review.save
-  #     redirect_to @review
-  #   else
-  #     render 'new'
-  #   end
-  # end
 
   def update
     @review = Review.find(params[:id])

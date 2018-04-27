@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426180209) do
+ActiveRecord::Schema.define(version: 20180426224619) do
 
   create_table "accesses", force: :cascade do |t|
     t.integer "profile_id"
@@ -18,15 +18,6 @@ ActiveRecord::Schema.define(version: 20180426180209) do
     t.boolean "access_given"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "body"
-    t.integer "review_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_comments_on_review_id"
   end
 
   create_table "profiles", force: :cascade do |t|
