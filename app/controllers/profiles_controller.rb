@@ -35,11 +35,6 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile(profile_params)
     # @profile.date = Time.now.strftime("%d/%m/%Y %H:%M")
     date = Time.now.strftime("%d/%m/%Y %H:%M")
-    puts "DATE"
-    puts date
-    # @user = User.find(@profile.user_id)
-    # @profile.firstName = @user.firstName
-
     @profile.firstName = current_user.firstName
     @profile.lastName = current_user.lastName
 

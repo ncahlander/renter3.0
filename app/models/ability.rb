@@ -8,11 +8,6 @@ class Ability
       if user.admin?
         can :manage, :all
       else
-        puts "ok"
-        puts user.id
-        this = user.id-1
-        puts "user - 1"
-        puts this
         can :read, Profile
         can :create, Profile
         #can :update, Profile, user_id: user.id
