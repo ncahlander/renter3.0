@@ -1,3 +1,16 @@
 <h1>Welcome to Renter</h1>
 
 <title>Renter</title>
+
+
+
+<% @accesser = Accesser.all  %>
+<% @accesser.each do |viewer| %>
+
+viewable_profile:
+<%= viewer.viewable_profile %>
+viewing profile:
+<%= viewer.viewing_id %>
+
+<br>
+<% end %>

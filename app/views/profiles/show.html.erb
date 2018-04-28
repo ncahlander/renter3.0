@@ -5,14 +5,8 @@
   <%= link_to "Edit", edit_profile_path(@profile) %>
 <% end %>
 
-<%= link_to 'Back', profiles_path %>
-
-<%= link_to 'create', new_review_path%>
 <h1><%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %></h1>
-name:
-<%= current_user.firstName %>
-<%= current_user.lastName %>
-<%= current_user.username %>
+
 
 <% if current_user.id != @profile.user_id %>
 <%= form_with(model: [@profile, @profile.accessers.build]) do |form| %>
@@ -22,31 +16,14 @@ name:
 <% end %>
 <% end %>
 
-
-
-<!-- <%= render 'viewer_accesses/form', viewer_access: @viewer_access %> -->
-<br>
-<h2> allow access! </h2>
-<br>
 <% allowed = false %>
 <% @accesser = Accesser.all  %>
 <% @accesser.each do |viewer| %>
 
-viewable_profile:
-<%= viewer.viewable_profile %>
-viewing profile:
-<%= viewer.viewing_id %>
-profile.user_id
-<%= @profile.user_id %>
-<br>
-
-
 
 <% if viewer.viewing_id == current_user.id %>
-viewed
 <% if viewer.viewable_profile == @profile.user_id %>
   <%if viewer.access_granted %>
-  APPROVED
     <% allowed = true %>
   <%end%>
   <% end %>
@@ -60,34 +37,17 @@ me
 <%= current_user.id %>
 <%= current_user.firstName %> <%= current_user.lastName %>
 
-<% if allowed %>
-ya it do
-<% end %>
-
-<% if allowed%>
-he
-<h2>hello, <%= current_user.firstName %>, it work</h2>
-
-
-<% end %>
-
 <% if current_user.id == @profile.user_id %>
-<h2>whaddup, <%= current_user.firstName %>, it work</h2>
+<% allowed = true %>
 <% end %>
 
-<h1> check </h1>
+<% reviewed = false %>
+<% if allowed%>
+<% @reviews.order('moveOut asc')
 <% @reviews.each do |review| %>
-my id:
-<%= current_user.id %> <br>
-user that reviewed:
-<%= review.user_id %> <br>
-user id of profile's user:
-<%= @profile.user_id %> <br>
-profile id:
-<%= review.profile_id %>
-<br>
     <h4> Review of <%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %> by <%= User.find(review.user_id).firstName %> <%= User.find(review.user_id).lastName %> </h4>
-    Reviewed on: add date field <br>
+    Reviewed on: <%= review.date %> <br>
+
     Proper notice given:
     <%= review.notice %> <br>
     Is tenant liable for rent or any unpaid amount:
@@ -135,17 +95,25 @@ profile id:
     Additional notes on tenant:
     <%= review.tenantNotes %> <br>
     Move-in date:
+    <%= review.moveIn %>
     <br>
     Move-out date:
+    <%= review.moveOut %>
     <br>
 
     <br>
 
 <% end %>
 
-<% if current_user.id == @profile.user_id  %>
-it u, dingus
-<%else %>
-<%= render 'reviews/form', profile: @profile %>
+<% end %>
 
+<% if current_user.id != @profile.user_id  %>
+<%= render 'reviews/form', profile: @profile %>
+<% end %>
+
+<% if @profile.user_id == current_user.id %>
+<% if reviewed == false%>
+<br>
+No reviews yet! Request a review from a previous landlord.
+<% end %>
 <% end %>
