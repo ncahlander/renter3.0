@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Abouts</h1>
+<h1>About Renter</h1>
 
 <table>
   <thead>
@@ -10,16 +10,11 @@
   </thead>
 
   <tbody>
-    <% @abouts.each do |about| %>
-      <tr>
-        <td><%= link_to 'Show', about %></td>
-        <td><%= link_to 'Edit', edit_about_path(about) %></td>
-        <td><%= link_to 'Destroy', about, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <p>
+      This website was created by Lucca Monnie and Nicole Cahlander. It was built over the Spring semester of 2018 at the University of Puget Sound in Tacoma, Washington for their Capstone in Computer Science course. Lucca developed the idea for this website over the summer of 2017, inspired by her upbringing with parents who ran a property management business. An extra bedroom off of the living room in her parents house is their office, and spending so much time around this business has left Lucca with too much knowledge for her own good on the ins and outs of property rentals. She saw an inefficient process in rental references, and an opportunity to help begin the automation of this process. Lucca and Nicole worked with Dave and Silke Monnie of Monnie Management to work through what the basic functionality of a starter website for this would be, and this is it! Renter! Renter allows users to create accounts, search for and review others, and reviews are kept private unless the tenant that the review is about releases viewing privileges to another specific user. This allows tenants and landlords to make accounts. Landlords can search for their tenants through the search function, and can fill out a review of that tenant. The reviewed tenant can then search through the website for the account of a landlord they are applying to live with, and allow that landlord access to their references.
+    </p>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New About', new_about_path %>
+<br>
