@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :abouts
   resources :viewer_accesses
   resources :profiles do
     resources :accessers

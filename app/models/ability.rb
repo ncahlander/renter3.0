@@ -16,6 +16,7 @@ class Ability
         can :read, Profile
         can :create, Profile
         #can :update, Profile, user_id: user.id
+        can :create, Profile
         can :update, Profile, user_id:user.id
         can :destroy, Profile, user_id: user.id
       #  can :access_given, ViewerAccess, user_id: user.id

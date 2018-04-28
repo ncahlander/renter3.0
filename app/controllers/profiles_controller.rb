@@ -33,6 +33,12 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = current_user.build_profile(profile_params)
+    @profile.date = Time.now.strftime("%d/%m/%Y %H:%M")
+    date = Time.now.strftime("%d/%m/%Y %H:%M")
+    puts "DATE"
+    puts date
+    # @user = User.find(@profile.user_id)
+    # @profile.firstName = @user.firstName
 
     @profile.firstName = current_user.firstName
     @profile.lastName = current_user.lastName
@@ -87,7 +93,7 @@ class ProfilesController < ApplicationController
     #
     # @profile = Profile.find(lord)
     respond_to do |format|
-      if @profile.update(profile_param2)
+      if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else

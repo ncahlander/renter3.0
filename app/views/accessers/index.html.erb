@@ -1,0 +1,12 @@
+<h1>Listing accesses</h1>
+<!-- MAKE SHOW BASED ON WHO IS SIGNED IN -->
+<table>
+
+
+  <% @accesser.each do |accesser| %>
+    <tr>
+      <td><%= link_to 'Destroy', accesser, method: :delete, data: { confirm: 'Are you sure?' } %></td> <br>
+
+    </tr>
+  <% end %>
+</table>

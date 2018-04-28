@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
   # notice: "no yikes"
   #
   load_and_authorize_resource param_method: :reviews_params
-  puts "HELLOMOTOTO2OO1"
   # notice: "yikes"
   #before_action :authenticate_user!
 #controller for all review related actions for the form
@@ -32,6 +31,11 @@ class ReviewsController < ApplicationController
     @profile = Profile.find(params[:profile_id])
     @review = @profile.reviews.build(reviews_params)
     @review.user_id = current_user.id
+
+    @review.date = Time.now.strftime("%d/%m/%Y")
+    date = Time.now.strftime("%d/%m/%Y")
+    puts "DATE"
+    puts date
 
     if @review.save!
       redirect_to @profile, notice: "Review saved, thank you!"
