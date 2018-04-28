@@ -20,19 +20,18 @@
         <%= link_to "renter", welcome_index_path, id: "logo" %>
 
 
-        <!-- Search bar -->
-        <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
-          <%= submit_tag "Search", :name => nil %>
-        <% end %>
+
 
         <nav>
           <ul class="nav navbar-nav navbar-right">
 
+            <!-- Search bar -->
+            <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+              <%= submit_tag "Search", :name => nil %>
+            <% end %>
 
 
-
-            <!-- <li><%= link_to "Search", '#' %></li> -->
             <li><%= link_to "About", welcome_index_path %></li>
             <!-- if not signed in-->
             <!-- <li><%= link_to "Log in", new_user_registration_path %></li> -->
@@ -61,6 +60,9 @@
         </nav>
       </div>
     </header>
+    <% if user_signed_in? %>
+      <%= current_user.firstName %> <%= current_user.lastName %>
+    <% end %>
     <div class="container">
     <!-- #keep or move up? -->
     <% if notice %> <p class="alert alert-info"><%= notice%> <%end%></p>
