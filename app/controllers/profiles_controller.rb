@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = current_user.build_profile(profile_params)
-    @profile.date = Time.now.strftime("%d/%m/%Y %H:%M")
+    # @profile.date = Time.now.strftime("%d/%m/%Y %H:%M")
     date = Time.now.strftime("%d/%m/%Y %H:%M")
     puts "DATE"
     puts date

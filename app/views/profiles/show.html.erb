@@ -5,10 +5,8 @@
   <%= link_to "Edit", edit_profile_path(@profile) %>
 <% end %>
 
-<<<<<<< HEAD
-=======
+
 <!-- <%= link_to 'create', new_review_path%> -->
->>>>>>> 8a8dd4a53016501c2439af13d7181eeef0f324ff
 <h1><%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %></h1>
 
 
@@ -34,21 +32,13 @@
   <% end %>
 <% end %>
 
-profile
-<%= @profile.id %>
-<%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %>
-me
-<%= current_user.id %>
-<%= current_user.firstName %>
-<%= current_user.lastName %>
-
 <% if current_user.id == @profile.user_id %>
 <% allowed = true %>
 <% end %>
 
 <% reviewed = false %>
 <% if allowed%>
-<% @reviews.order('moveOut asc')
+<% @reviews.order('moveOut asc') %>
 <% @reviews.each do |review| %>
     <h4> Review of <%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %> by <%= User.find(review.user_id).firstName %> <%= User.find(review.user_id).lastName %> </h4>
     Reviewed on: <%= review.date %> <br>
@@ -110,15 +100,11 @@ me
 
 <% end %>
 
-<<<<<<< HEAD
 <% end %>
 
 <% if current_user.id != @profile.user_id  %>
-=======
-<% if current_user.id == @profile.user_id  %>
 
-<%else %>
->>>>>>> 8a8dd4a53016501c2439af13d7181eeef0f324ff
+
 <%= render 'reviews/form', profile: @profile %>
 <% end %>
 
