@@ -5,12 +5,16 @@
   <%= link_to "Edit", edit_profile_path(@profile) %>
 <% end %>
 
+<<<<<<< HEAD
+=======
+<!-- <%= link_to 'create', new_review_path%> -->
+>>>>>>> 8a8dd4a53016501c2439af13d7181eeef0f324ff
 <h1><%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %></h1>
 
 
 <% if current_user.id != @profile.user_id %>
 <%= form_with(model: [@profile, @profile.accessers.build]) do |form| %>
-  <%= form.label :allow_aaccess %>
+  <%= form.label :allow_access %>
   <%= form.check_box :access_granted  %>
   <%= form.submit "enter", class: "btn btn-primary" %>
 <% end %>
@@ -35,7 +39,8 @@ profile
 <%= User.find(@profile.user_id).firstName %> <%= User.find(@profile.user_id).lastName %>
 me
 <%= current_user.id %>
-<%= current_user.firstName %> <%= current_user.lastName %>
+<%= current_user.firstName %>
+<%= current_user.lastName %>
 
 <% if current_user.id == @profile.user_id %>
 <% allowed = true %>
@@ -105,9 +110,15 @@ me
 
 <% end %>
 
+<<<<<<< HEAD
 <% end %>
 
 <% if current_user.id != @profile.user_id  %>
+=======
+<% if current_user.id == @profile.user_id  %>
+
+<%else %>
+>>>>>>> 8a8dd4a53016501c2439af13d7181eeef0f324ff
 <%= render 'reviews/form', profile: @profile %>
 <% end %>
 

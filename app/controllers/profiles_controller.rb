@@ -40,6 +40,9 @@ class ProfilesController < ApplicationController
     # @user = User.find(@profile.user_id)
     # @profile.firstName = @user.firstName
 
+    @profile.firstName = current_user.firstName
+    @profile.lastName = current_user.lastName
+
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }

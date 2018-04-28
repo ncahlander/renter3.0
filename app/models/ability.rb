@@ -14,6 +14,7 @@ class Ability
         puts "user - 1"
         puts this
         can :read, Profile
+        can :create, Profile
         #can :update, Profile, user_id: user.id
         can :create, Profile
         can :update, Profile, user_id:user.id
